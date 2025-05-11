@@ -1,0 +1,11 @@
+const promise1 = Promise.resolve('First');
+const promise2 = Promise.resolve('Second');
+const promise3 = Promise.resolve('Third');
+
+Promise.all([promise1, promise2, promise3])
+  .then((results) => {
+    console.log('All succeeded:', results);
+  })
+  .catch((error) => {
+    console.log('One failed:', error);
+  });
