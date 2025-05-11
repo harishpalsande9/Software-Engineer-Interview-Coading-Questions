@@ -1,11 +1,16 @@
-const promise1 = Promise.resolve('First');
-const promise2 = Promise.resolve('Second');
-const promise3 = Promise.resolve('Third');
+// "Promise.all waits for all promises
+// to succeed. If one fails, it rejects
+// everything."
 
-Promise.all([promise1, promise2, promise3])
+const promise1 = Promise.resolve("First");
+const promise2 = Promise.reject("Second");
+const promise3 = Promise.resolve("Third");
+const promise4 = Promise.resolve("Four");
+
+Promise.all([promise1, promise2, promise3, promise4])
   .then((results) => {
-    console.log('All succeeded:', results);
+    console.log("All succeeded:", results);
   })
   .catch((error) => {
-    console.log('One failed:', error);
+    console.log("One failed:", error);
   });
