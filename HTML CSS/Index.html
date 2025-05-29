@@ -2,25 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Box Model Example</title>
+  <title>Event Bubbling with Alert</title>
   <style>
-    .box {
-      width: 200px;
-      height: 100px;
+    #grandparent, #parent, #child {
       padding: 20px;
-      border: 5px solid blue;
-      margin: 30px;
-      background-color: lightyellow;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      line-height: 100px;
+      margin: 10px;
+      border: 2px solid black;
     }
-    body {
-      background-color: #f0f0f0;
-    }
+    #grandparent { background-color: #f9c2ff; }
+    #parent { background-color: #c2f9ff; }
+    #child { background-color: #ffc2c2; }
   </style>
 </head>
 <body>
-  <div class="box">Hello, I'm a box!</div>
+
+  <div id="grandparent">
+    Grandparent
+    <div id="parent">
+      Parent
+      <div id="child">
+        Child (Click me!)
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('grandparent').addEventListener('click', function () {
+      alert('Grandparent clicked!');
+    });
+    document.getElementById('parent').addEventListener('click', function () {
+      alert('Parent clicked!');
+    });
+    document.getElementById('child').addEventListener('click', function () {
+      alert('Child clicked!');
+      // This stops the bubbling here
+      event.stopPropagation(); 
+
+    });
+  </script>
+
 </body>
 </html>
